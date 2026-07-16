@@ -1,0 +1,21 @@
+follower:
+  ekf_filter_node:
+    ros__parameters:
+      use_sim_time: true
+      frequency: 30.0
+      two_d_mode: true
+      publish_tf: true
+      map_frame: map
+      odom_frame: follower/odom
+      base_link_frame: follower/base_footprint
+      world_frame: follower/odom
+      odom0: /follower/diff_drive_controller/odom
+      odom0_config: [true,  true,  false,
+                     false, false, true,
+                     true,  true,  false,
+                     false, false, true,
+                     false, false, false]
+      odom0_differential: false
+      odom0_relative: false
+      odom0_queue_size: 10
+      publish_acceleration: false

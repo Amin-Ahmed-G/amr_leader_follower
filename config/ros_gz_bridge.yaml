@@ -1,0 +1,44 @@
+---
+# ros_gz_bridge configuration
+# Each Gazebo topic maps to a distinct ROS topic.
+# Note: /model/*/pose topics are bridged to separate ROS topics,
+# then the launch file re-publishes them merged on /tf via the
+# ground_truth_bridge or via the parameter_bridge remappings.
+# Having two entries map to the SAME ros_topic_name breaks the bridge,
+# so we use unique ROS topics here and merge in the launch file.
+
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/leader/scan"
+  gz_topic_name: "/leader/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/follower/scan"
+  gz_topic_name: "/follower/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/leader/camera/image_raw"
+  gz_topic_name: "/leader/camera/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/model/leader/pose"
+  gz_topic_name: "/model/leader/pose"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/model/follower/pose"
+  gz_topic_name: "/model/follower/pose"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS

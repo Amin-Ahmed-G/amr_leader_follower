@@ -1,0 +1,45 @@
+follower/amcl:
+  ros__parameters:
+    use_sim_time: true
+
+    # Frames
+    base_frame_id: "leader/base_footprint"
+    odom_frame_id: "leader/odom"
+    global_frame_id: "map"
+    scan_topic: "/follower/scan"
+    first_map_only: true
+    first_map_only: true
+
+    # Initial pose — set this to wherever the follower actually spawns
+    # relative to the map origin (same values you used in the static
+    # transform: x=-1.2, y=0.0, yaw=0.0)
+    set_initial_pose: true
+    initial_pose.x: -1.2
+    initial_pose.y: 0.0
+    initial_pose.z: 0.0
+    initial_pose.yaw: 0.0
+
+    # Particle filter — defaults, don't over-tune yet
+    min_particles: 500
+    max_particles: 2000
+    update_min_d: 0.1
+    update_min_a: 0.1
+    resample_interval: 1
+    # Keep modest tolerance now that /clock is single-publisher on 127.0.0.1.
+    # Previously 3.0 stamped map→odom ~3s into the future and caused intermittent
+    # Time() extrapolation failures when composing with fresher odom→base TF.
+    transform_tolerance: 0.5
+    tf_buffer_duration: 30.0
+
+    # Laser model
+    laser_max_range: 10.0
+    laser_min_range: -1.0
+    laser_model_type: "likelihood_field"
+    laser_likelihood_max_dist: 2.0
+
+    # Odom model — diff drive
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"
+    odom_alpha1: 0.2
+    odom_alpha2: 0.2
+    odom_alpha3: 0.2
+    odom_alpha4: 0.2
