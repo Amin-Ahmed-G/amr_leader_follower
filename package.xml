@@ -4,8 +4,9 @@
   <name>amr_leader_follower</name>
   <version>0.0.1</version>
   <description>AMR leader follower robot package with 4-wheel drive and obstacle avoidance</description>
-  <maintainer email="aminahmedg2005@gmail.com">Amin-Ahmed-G</maintainer>
-  <license>MIT</license>
+
+  <maintainer email="aminahmedg2005@gmail.com">Amin Ahmed G</maintainer>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
